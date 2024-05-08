@@ -1,4 +1,4 @@
-#include "c-hot.h"
+#include "hotdog.h"
 #include "watchdog.h"
 
 void lib_watchdog_handler(void *args);
