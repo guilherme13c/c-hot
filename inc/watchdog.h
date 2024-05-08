@@ -2,18 +2,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 struct filestate;
-
-void watchfile(struct filestate *fs, void **args);
-time_t filelastmod(char *filename);
 
 #ifdef __linux__
 
 #include <errno.h>
 #include <pthread.h>
 #include <sys/stat.h>
+#include <time.h>
 #include <unistd.h>
 
 struct filestate {
@@ -23,9 +20,10 @@ struct filestate {
     pthread_t *th;
 };
 
-void *__watchfile(void *arg) {
-    
+void watchfile(struct filestate *fs, void **args);
+time_t filelastmod(char *filename);
 
+void *__watchfile(void *arg) {
     void **args = (void **)arg;
 
     struct filestate *fs = (struct filestate *)args[0];
@@ -41,15 +39,15 @@ void *__watchfile(void *arg) {
 
         current_lastmodified = filelastmod(fs->path);
 
-        if (current_lastmodified != -1 && current_lastmodified !=
-            fs->lastmodified) {
+        if (current_lastmodified != -1 &&
+            current_lastmodified != fs->lastmodified) {
             handler(handlerargs);
 
             fs->lastmodified = current_lastmodified;
         }
         pthread_mutex_unlock(fs->mutex);
 
-        sleep(1); // Sleep for 1 s
+        sleep(1); // sleep for 1s
     }
 }
 

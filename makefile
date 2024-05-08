@@ -1,12 +1,10 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c17 -Wno-unused-variable -Wno-unused-result -O3 -Iinc -ltest -lpthread
+CFLAGS = -Wall -Wextra -std=c17 -Wno-unused-variable -Wno-unused-result -O3 -Iinc -ltest -lpthread 
 
 $(shell mkdir -p bin lib obj)
 
-testlib:
-	buildlib.sh
-
 build: src/main.c
+	./buildlib.sh
 	$(CC) src/main.c $(CFLAGS) -o bin/main
 
 clean:

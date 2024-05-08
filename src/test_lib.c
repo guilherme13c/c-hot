@@ -1,3 +1,3 @@
 #include <stdio.h>
 
-void printmsg(char *msg) { printf("%s", msg); }
+void printmsg(char *msg) { printf("%s\n", msg); }

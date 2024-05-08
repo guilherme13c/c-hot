@@ -1,5 +1,5 @@
-#include "hotdog.h"
 #include "watchdog.h"
+#include "hotdog.h"
 
 void lib_watchdog_handler(void *args);
 
@@ -24,7 +24,7 @@ int main(void) {
         sleep(1);
         pthread_mutex_lock(&lib_mutex);
 
-        printmsg("Test\n");
+        printmsg("Test");
 
         pthread_mutex_unlock(&lib_mutex);
     }
