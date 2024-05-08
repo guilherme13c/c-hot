@@ -4,7 +4,7 @@ cDog is a simple header only library for hotreloading dynamic libraries in C and
 
 ## How to use
 
-1. Download the files [hotdog.h](https://github.com/guilherme13c/cDog/blob/main/inc/hotdog.h) and [watchdog.h](https://github.com/guilherme13c/cDog/blob/main/inc/watchdog.h) from the `inc/` folder of this repository.
+1. Download the files [hotdog.h](https://github.com/guilherme13c/cDog/blob/main/inc/hotdog.h) and [watchdog.h](https://github.com/guilherme13c/cDog/blob/main/inc/watchdog.h) from the `inc/` folder of this repository. 
 
 2. Include the files in your program:
 
@@ -60,7 +60,7 @@ cDog is a simple header only library for hotreloading dynamic libraries in C and
     }
     ```
 
-6. Add the flag `-lpthread` to you compilation command, since the `watchdog.h` file depends on it.
+6. Add the flag `-lpthread` to you compilation command, since the [watchdog.h](https://github.com/guilherme13c/cDog/blob/main/inc/watchdog.h) file depends on it.
 
     ```Makefile
     CC = gcc
