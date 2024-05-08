@@ -22,7 +22,6 @@ int main(void) {
 
     while (1) {
         sleep(1);
-
         pthread_mutex_lock(&lib_mutex);
 
         printmsg("Test\n");
@@ -38,11 +37,13 @@ int main(void) {
 void lib_watchdog_handler(void *args) {
     void **arg_list = (void **)args;
 
+    system("./buildlib.sh;");
+
     if (libhandle != NULL) {
         closelib(libhandle);
     }
     libhandle = loadlib("lib/libtest.so");
-    printmsg = (printmsgSymbol)dlsym(libhandle, "printmsg");
+    printmsg = (printmsgSymbol)getsymbol(libhandle, "printmsg");
 
     return;
 }
